@@ -1,0 +1,1210 @@
+@charset "UTF-8";
+.modal-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+  opacity: 1;
+  transition: visibility 0s, opacity 0.3s ease;
+  /* 모달 창 */
+}
+.modal-background .modal {
+  background-color: #fff;
+  padding: 30px;
+  padding-top: 80px;
+  border-radius: 10px;
+  width: 270px;
+  text-align: center;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  position: relative;
+  /* 버튼 스타일 */
+}
+.modal-background .modal img {
+  position: absolute;
+  top: 0%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 120px;
+  height: 120px;
+}
+.modal-background .modal p {
+  font-family: "Noto Sans KR", sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+}
+.modal-background .modal button {
+  margin-top: 30px;
+  padding: 10px 30px;
+  background-color: #dec1e5;
+  color: #525252;
+  font-weight: 500;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.modal-background .loading {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  justify-content: center;
+  align-items: center;
+}
+.modal-background .loading img {
+  width: 80px;
+  height: 80px;
+}
+.modal-background .loading span {
+  color: #ffffff;
+  font-size: 16px;
+  line-height: 1.5;
+  text-align: center;
+  font-size: 500;
+}
+.modal-background .loading a {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.modal-background .loading a button {
+  padding: 10px;
+  width: 100%;
+  border: none;
+  border-radius: 10px;
+  background-color: #c7c7c7;
+}
+
+@font-face {
+  font-family: "Pretendard-Regular";
+  src: url("https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff") format("woff");
+  font-weight: 400;
+  font-style: normal;
+}
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%; /* body와 html의 높이를 100%로 설정 */
+  overflow-y: auto; /* 스크롤 허용 */
+}
+
+* {
+  font-family: "Pretendard-Regular", Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  letter-spacing: 0.3px;
+}
+
+.container {
+  width: 100vw;
+  margin: 0 auto;
+  position: relative;
+}
+
+a {
+  text-decoration: none;
+  color: #555555;
+}
+
+ul,
+ol,
+li {
+  list-style: none;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+input[type=text] {
+  border: 1px solid #c7c7c7;
+  padding: 10px 15px;
+  border-radius: 12px;
+  font-size: 12px;
+  width: 100%;
+  text-align: center;
+}
+input[type=text]:focus {
+  outline: none;
+}
+
+textarea {
+  outline: none;
+  padding: 20px;
+  border-radius: 12px;
+  border: 1px solid #c7c7c7;
+  height: 100%;
+  width: 100%;
+}
+
+.mb20 {
+  margin-bottom: 20px;
+}
+
+.mt20 {
+  margin-top: 20px;
+}
+
+.mt30 {
+  margin-top: 30px;
+}
+
+.mt60 {
+  margin-top: 60px;
+}
+
+header {
+  position: sticky;
+  z-index: 999;
+  top: 0;
+  background: #ffffff;
+  padding: 0px 15px;
+  height: 50px;
+  width: 100%;
+}
+header .headerWrap {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 50px;
+  padding: 0px;
+}
+header .headerWrap .header-left,
+header .headerWrap .header-right {
+  width: 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+header .headerWrap .header-left .icon,
+header .headerWrap .header-right .icon {
+  width: 22px;
+  height: 22px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+header .headerWrap .header-left .icon a,
+header .headerWrap .header-right .icon a {
+  width: 22px;
+  height: 22px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+header .headerWrap .header-left .icon a img,
+header .headerWrap .header-right .icon a img {
+  width: 22px;
+  display: flex;
+}
+header .headerWrap .header-center .txt p {
+  font-weight: 700;
+  text-align: center;
+  font-size: 15px;
+  color: #555555;
+  word-break: keep-all;
+}
+
+nav {
+  border-top: 1px solid #c7c7c7;
+  width: 100%;
+  height: 80px;
+  position: fixed;
+  bottom: 0;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+  z-index: 999;
+  background-color: #ffffff;
+}
+nav ul {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  gap: 10px;
+  background-color: #ffffff;
+}
+nav ul li {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+  padding: 17px;
+  border-radius: 10px;
+}
+nav ul .navOn {
+  background-color: #dec1e5;
+}
+
+.bottomBtnWrap {
+  z-index: 999;
+  width: 100%;
+  height: 75px;
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  transform: translate(-50%, 0);
+  padding: 10px 15px 15px 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.bottomBtnWrap .bottomBtn {
+  width: 100%;
+  height: 50px;
+}
+.bottomBtnWrap .bottomBtn a button {
+  background-color: #dec1e5;
+  border-radius: 12px;
+  color: #ffffff;
+  width: 100%;
+  height: 50px;
+  border: none;
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 13px;
+  letter-spacing: 0.3px;
+  text-align: center;
+}
+
+.bottomBtnWrap2 {
+  z-index: 999;
+  width: 100%;
+  height: 75px;
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  transform: translate(-50%, 0);
+  padding: 10px 15px 15px 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.bottomBtnWrap2 .bottomBtn {
+  width: 100%;
+  height: 50px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+}
+.bottomBtnWrap2 .bottomBtn a {
+  width: 100%;
+}
+.bottomBtnWrap2 .bottomBtn a button {
+  background-color: #dec1e5;
+  border-radius: 12px;
+  color: #ffffff;
+  width: 100%;
+  height: 50px;
+  border: none;
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 15px;
+  letter-spacing: 0.3px;
+  text-align: center;
+}
+.bottomBtnWrap2 .bottomBtn a .secondBtn {
+  background-color: #ddedea;
+  color: #ffffff;
+}
+
+section {
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  overflow: hidden;
+  gap: 30px;
+  overflow: visible;
+}
+section .mainDate {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+section .mainDate span {
+  font-weight: 500;
+  font-family: "Montserrat", sans-serif;
+  color: #c7c7c7;
+  font-size: 16px;
+  letter-spacing: -0.5px;
+}
+section .mainDate span:last-child {
+  font-weight: 700;
+  color: #525252;
+  font-size: 30px;
+  letter-spacing: -0.5px;
+}
+section .year {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+section .year select {
+  padding: 2vw;
+  border: none;
+  font-size: 16px;
+  font-weight: 700;
+  outline: none;
+  color: #555555;
+  font-family: "Montserrat", sans-serif;
+  letter-spacing: 0.3px;
+}
+.swiper {
+  width: 100%;
+  height: 300px;
+  overflow: hidden;
+}
+.swiper .swiper-wrapper {
+  display: flex;
+}
+.swiper .swiper-wrapper .swiper-slide {
+  text-align: center;
+  font-size: 18px;
+  background: #fff;
+  height: 300px;
+  width: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: transform 0.3s ease;
+  opacity: 0.5;
+  width: 80%;
+  position: relative;
+}
+.swiper .swiper-wrapper .swiper-slide .img-wrapper {
+  position: relative;
+  width: 300px;
+  height: 300px;
+}
+.swiper .swiper-wrapper .swiper-slide .img-wrapper img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(0.7);
+}
+.swiper .swiper-wrapper .swiper-slide .date {
+  position: absolute;
+  top: 10px;
+  left: 20px;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.swiper .swiper-wrapper .swiper-slide .date span {
+  color: #fff;
+  font-weight: 500;
+  font-size: 28px;
+  font-family: "Montserrat", sans-serif;
+}
+.swiper .swiper-wrapper .swiper-slide .date span:first-child {
+  font-size: 50px;
+  font-weight: 600;
+}
+.swiper .swiper-wrapper .swiper-slide .profile {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: calc(100% - 40px);
+}
+.swiper .swiper-wrapper .swiper-slide .profile .profileImg {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.swiper .swiper-wrapper .swiper-slide .profile .profileImg img {
+  border-radius: 50px;
+  width: 35px;
+  height: 35px;
+  cursor: pointer;
+}
+.swiper .swiper-wrapper .swiper-slide .profile .profileImg .profileInfo {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.swiper .swiper-wrapper .swiper-slide .profile .profileImg .profileInfo span {
+  color: #ffffff;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 600;
+  font-size: 0.8rem;
+}
+.swiper .swiper-wrapper .swiper-slide .profile .profileImg .profileInfo span:last-child {
+  font-weight: 400;
+  font-size: 0.6rem;
+}
+.swiper .swiper-wrapper .swiper-slide .profile .follow {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 600;
+  font-size: 0.6rem;
+  text-align: center;
+  color: #ffffff;
+  padding: 6px 10px;
+  border-radius: 50px;
+  border: none;
+  cursor: pointer;
+  background-color: transparent;
+  border: 1px solid #ffffff;
+}
+.swiper .swiper-wrapper .swiper-slide-active {
+  opacity: 1;
+  transform: scale(1);
+}
+.swiper .swiper-wrapper .swiper-slide-prev,
+.swiper .swiper-wrapper .swiper-slide-next {
+  transform: scale(0.9);
+  opacity: 0.4;
+}
+.btnWrap {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 30px;
+  padding: 20px;
+  padding-bottom: 125px; /* nav의 높이만큼 패딩 추가 */
+}
+.btnWrap p {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+}
+.btnWrap p span {
+  font-weight: 400;
+  font-family: "Noto Sans KR", sans-serif;
+  font-size: 0.95rem;
+  color: #4a4a4a;
+}
+.btnWrap .btn {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 12px 20px;
+  border-radius: 10px;
+  border: none;
+  background-color: #fadadd;
+  font-weight: 500;
+  color: #525252;
+  font-size: 13px;
+}
+.btnWrap .btn img {
+  width: 12px;
+  height: 12px;
+  margin-top: 2px;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 0px 15px;
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+.login-form .login-input {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.login-form .login-input p {
+  color: #555555;
+  font-weight: 600;
+  font-size: 13px;
+}
+.login-form .login-input p span {
+  color: #ff5959;
+  font-weight: 500;
+  font-size: 16px;
+}
+.login-form .login-input input[type=text],
+.login-form .login-input select,
+.login-form .login-input input[type=email],
+.login-form .login-input input[type=password] {
+  border: 1px solid #c7c7c7;
+  width: 100%;
+  padding: 10px 15px 10px 15px;
+  border-radius: 10px;
+  outline: none;
+  caret-color: #dec1e5;
+  background-color: #ffffff;
+  text-align: left;
+}
+.login-form .login-input input[type=text]::placeholder,
+.login-form .login-input select::placeholder,
+.login-form .login-input input[type=email]::placeholder,
+.login-form .login-input input[type=password]::placeholder {
+  font-size: 12px;
+}
+.login-form .login-input input[type=text]:focus,
+.login-form .login-input select:focus,
+.login-form .login-input input[type=email]:focus,
+.login-form .login-input input[type=password]:focus {
+  outline: none;
+}
+.login-form .login-input .err-text {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.login-form .login-input .err-text img {
+  width: 16px;
+  height: 16px;
+}
+.login-form .login-input .err-text p {
+  font-weight: 500;
+  font-size: 13px;
+  color: #ff5959;
+}
+.login-form .login-option {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 0px;
+}
+.login-form .login-option .toggle {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+}
+.login-form .login-option .toggle input {
+  display: none;
+}
+.login-form .login-option .toggle .toggle-switch {
+  width: 30px; /* 너비를 30px로 조정 */
+  height: 15px; /* 높이 조정 */
+  display: block;
+  position: relative;
+  border-radius: 7.5px; /* 둥근 모서리 반경 조정 */
+  background-color: #fff;
+  box-shadow: 0 0 8px 2px rgba(0, 0, 0, 0.15);
+  cursor: pointer;
+  margin: 10px 5px 10px 5px; /* 마진 조정 */
+  transition: all 0.2s ease-in;
+}
+.login-form .login-option .toggle .toggle-switch .toggle-button {
+  width: 10px; /* 버튼의 너비 조정 */
+  height: 10px; /* 버튼의 높이 조정 */
+  position: absolute;
+  top: 50%;
+  left: 2px; /* 초기 위치 조정 */
+  transform: translateY(-50%);
+  border-radius: 50%;
+  background: #f03d3d;
+  transition: all 0.2s ease-in;
+}
+.login-form .login-option .toggle input[type=checkbox]:checked ~ .toggle-switch {
+  background: #f03d3d;
+}
+.login-form .login-option .toggle input[type=checkbox]:checked ~ .toggle-switch .toggle-button {
+  left: calc(100% - 14px); /* 체크 시 버튼의 위치 조정 */
+  background: #fff;
+}
+.login-form .login-option .toggle span {
+  font-weight: 500;
+  font-size: 12px;
+  color: #555555;
+  letter-spacing: 0.3px;
+}
+.login-form .login-option .forgot-pw p {
+  font-weight: 500;
+  font-size: 12px;
+  color: #555555;
+  letter-spacing: 0.3px;
+}
+.login-form .login-button {
+  width: 100%;
+  margin-top: -15px;
+}
+.login-form .login-button a button {
+  width: 100%;
+  background-color: #dec1e5;
+  padding: 15px;
+  border-radius: 12px;
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: 0.3px;
+  border: none;
+}
+
+.login {
+  padding: 20px 20px 0px 20px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.login .loginHeader {
+  background-color: transparent;
+  position: relative;
+  width: calc(100% + 40px);
+  margin-right: -20px;
+  margin-left: -20px;
+  margin-top: -20px;
+  background-color: #dec1e5;
+}
+.login .loginHeader .headerWrap {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+.login .loginHeader .headerWrap .header-left .icon a,
+.login .loginHeader .headerWrap .header-right .icon a {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+.login .loginHeader .headerWrap .header-left .icon a img,
+.login .loginHeader .headerWrap .header-right .icon a img {
+  width: 20px;
+}
+.login .wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 30px;
+  width: calc(100% + 40px);
+  margin-right: -20px;
+  margin-left: -20px;
+  background-color: #dec1e5;
+  padding: 20px 20px 0px 20px;
+  flex-grow: 1;
+}
+.login .wrap .login-txt {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.login .wrap .login-txt div {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 5px;
+  margin-bottom: 15px;
+}
+.login .wrap .login-txt div p {
+  font-size: 22px;
+  color: #ffffff;
+  font-weight: 600;
+}
+.login .wrap .login-txt span {
+  color: #ffffff;
+  font-weight: 500;
+  font-size: 18px;
+}
+.login .wrap main {
+  width: calc(100% + 40px);
+  margin-left: -20px;
+  margin-right: -20px;
+  padding: 30px 15px;
+  background-color: #ffffff;
+  border-top-left-radius: 30px;
+  border-top-right-radius: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  height: 100%;
+}
+.login .wrap main .login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+.login .wrap main .login-form .login-input {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.login .wrap main .login-form .login-input p {
+  color: #555555;
+  font-weight: 600;
+  font-size: 16px;
+}
+.login .wrap main .login-form .login-input p span {
+  color: #ff5959;
+  font-weight: 500;
+  font-size: 15px;
+}
+.login .wrap main .login-form .login-input input[type=text],
+.login .wrap main .login-form .login-input select,
+.login .wrap main .login-form .login-input input[type=email],
+.login .wrap main .login-form .login-input input[type=password] {
+  border: 1px solid #c7c7c7;
+  width: 100%;
+  padding: 12px 15px 12px 15px;
+  border-radius: 10px;
+  outline: none;
+  caret-color: #dec1e5;
+  background-color: #ffffff;
+  text-align: left;
+}
+.login .wrap main .login-form .login-input input[type=text]::placeholder,
+.login .wrap main .login-form .login-input select::placeholder,
+.login .wrap main .login-form .login-input input[type=email]::placeholder,
+.login .wrap main .login-form .login-input input[type=password]::placeholder {
+  font-size: 13px;
+}
+.login .wrap main .login-form .login-input input[type=text]:focus,
+.login .wrap main .login-form .login-input select:focus,
+.login .wrap main .login-form .login-input input[type=email]:focus,
+.login .wrap main .login-form .login-input input[type=password]:focus {
+  outline: none;
+}
+.login .wrap main .login-form .login-input .err-text {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+.login .wrap main .login-form .login-input .err-text img {
+  width: 16px;
+  height: 16px;
+}
+.login .wrap main .login-form .login-input .err-text p {
+  font-weight: 500;
+  font-size: 14px;
+  color: #ff5959;
+}
+.login .wrap main .login-form .login-option {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 0px;
+}
+.login .wrap main .login-form .login-option .toggle {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+}
+.login .wrap main .login-form .login-option .toggle input {
+  display: none;
+}
+.login .wrap main .login-form .login-option .toggle .toggle-switch {
+  width: 30px; /* 너비를 30px로 조정 */
+  height: 15px; /* 높이 조정 */
+  display: block;
+  position: relative;
+  border-radius: 7.5px; /* 둥근 모서리 반경 조정 */
+  background-color: #fff;
+  box-shadow: 0 0 8px 2px rgba(0, 0, 0, 0.15);
+  cursor: pointer;
+  margin: 10px 5px 10px 5px; /* 마진 조정 */
+  transition: all 0.2s ease-in;
+}
+.login .wrap main .login-form .login-option .toggle .toggle-switch .toggle-button {
+  width: 10px; /* 버튼의 너비 조정 */
+  height: 10px; /* 버튼의 높이 조정 */
+  position: absolute;
+  top: 50%;
+  left: 2px; /* 초기 위치 조정 */
+  transform: translateY(-50%);
+  border-radius: 50%;
+  background: #f03d3d;
+  transition: all 0.2s ease-in;
+}
+.login .wrap main .login-form .login-option .toggle input[type=checkbox]:checked ~ .toggle-switch {
+  background: #f03d3d;
+}
+.login .wrap main .login-form .login-option .toggle input[type=checkbox]:checked ~ .toggle-switch .toggle-button {
+  left: calc(100% - 14px); /* 체크 시 버튼의 위치 조정 */
+  background: #fff;
+}
+.login .wrap main .login-form .login-option .toggle span {
+  font-weight: 500;
+  font-size: 14px;
+  color: #555555;
+}
+.login .wrap main .login-form .login-option .forgot-pw p {
+  font-weight: 500;
+  font-size: 14px;
+  color: #555555;
+}
+.login .wrap main .login-form .login-button {
+  width: 100%;
+  margin-top: -15px;
+}
+.login .wrap main .login-form .login-button a button {
+  width: 100%;
+  background-color: #dec1e5;
+  padding: 15px;
+  border-radius: 12px;
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: 0.3px;
+  border: none;
+}
+.login .wrap main .social-login {
+  margin: 10px 0px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+}
+.login .wrap main .social-login img {
+  width: 53px;
+  height: 52px;
+}
+.login .wrap main .join {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.login .wrap main .join p {
+  color: #555555;
+  font-size: 14px;
+  font-weight: 500;
+}
+.login .wrap main .join p span {
+  font-weight: 500;
+  text-decoration: underline;
+  margin-left: 3px;
+  cursor: pointer;
+}
+
+.join .wrap .joinMain {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  padding-top: 20px;
+}
+.join .wrap .joinMain .progress-bar {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+}
+.join .wrap .joinMain .progress-bar progress {
+  -webkit-appearance: none;
+  width: 100%;
+  height: 8px;
+}
+.join .wrap .joinMain .progress-bar ::-webkit-progress-bar {
+  background-color: grey;
+  border-radius: 50px;
+  background-color: #fbeeff;
+}
+.join .wrap .joinMain .progress-bar ::-webkit-progress-value {
+  background-color: #dec1e5;
+  border-radius: 50px;
+}
+.join .wrap .joinMain .progress-bar img {
+  width: 20px;
+  height: 20px;
+}
+.join .wrap .joinMain .join-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+}
+.join .wrap .joinMain .join-content .join-txt {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+}
+.join .wrap .joinMain .join-content .join-txt p {
+  font-weight: 700;
+  font-size: 15px;
+  color: #555555;
+  letter-spacing: 0.3px;
+}
+.join .wrap .joinMain .join-content .join-txt p span {
+  color: #dec1e5;
+}
+.join .wrap .joinMain .join-content .terms {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 10px;
+}
+.join .wrap .joinMain .join-content .terms .all-agreed,
+.join .wrap .joinMain .join-content .terms .terms-con {
+  width: 100%;
+  background-color: #f1f1f1;
+  padding: 20px;
+  border-radius: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.join .wrap .joinMain .join-content .terms .all-agreed label,
+.join .wrap .joinMain .join-content .terms .terms-con label {
+  width: 100%;
+  font-size: 13px;
+  font-weight: 600;
+  color: #555555;
+}
+.join .wrap .joinMain .join-content .terms .all-agreed label a,
+.join .wrap .joinMain .join-content .terms .terms-con label a {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.join .wrap .joinMain .join-content .terms .all-agreed label a span,
+.join .wrap .joinMain .join-content .terms .terms-con label a span {
+  color: #555555;
+}
+.join .wrap .joinMain .join-content .terms .terms-con {
+  background-color: transparent;
+  padding: 10px 20px;
+}
+.join .wrap .joinMain .join-content .terms .terms-con label {
+  width: 100%;
+  font-size: 12.5px;
+  font-weight: 600;
+  color: #555555;
+}
+.join .wrap .joinMain .join-content .terms .terms-con label a {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.join .wrap .joinMain .join-content .terms .terms-con label a span {
+  color: #555555;
+}
+.join .wrap .joinMain .join-content .img {
+  width: 230px;
+  height: 230px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.join .wrap .joinMain .join-content .img img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+.join .wrap .joinMain .join-content .join-biz-txt {
+  display: flex;
+  align-items: center;
+}
+.join .wrap .joinMain .join-content .join-biz-txt p span {
+  color: #dec1e5;
+}
+.join .wrap .joinMain .join-content .join-confirm {
+  gap: 10px;
+}
+.join .wrap .joinMain .join-content .join-confirm p {
+  font-weight: 700;
+  font-size: 20px;
+  color: #555555;
+}
+.join .wrap .joinMain .join-content .join-confirm span {
+  margin-top: 10px;
+  font-weight: 500;
+  font-size: 14px;
+  color: #555555;
+}
+.join .wrap .joinMain .login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+.join .wrap .joinMain .login-form .login-input {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.join .wrap .joinMain .login-form .login-input p {
+  color: #555555;
+  font-weight: 600;
+  font-size: 13px;
+}
+.join .wrap .joinMain .login-form .login-input p span {
+  color: #ff5959;
+  font-weight: 500;
+  font-size: 16px;
+}
+.join .wrap .joinMain .login-form .login-input button {
+  border: none;
+  background-color: #ddedea;
+  width: 100%;
+  border-radius: 10px;
+  padding: 12px;
+  font-weight: 600;
+  font-size: 12px;
+  color: #555555;
+  cursor: pointer;
+}
+
+.writingDiary {
+  height: calc(100vh - 250px);
+  gap: 20px;
+}
+.writingDiary .btnWrap {
+  width: 100%;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.writingDiary .btnWrap a {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.writingDiary .btnWrap a button {
+  width: 100%;
+  padding: 10px;
+  border-radius: 10px;
+  border: none;
+  background-color: #fadadd;
+  font-weight: 500;
+  color: #525252;
+  font-size: 13px;
+}
+
+.writingView {
+  height: calc(100vh - 160px);
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  overflow-y: auto;
+}
+.writingView img {
+  width: 30px;
+  height: 30px;
+  margin-bottom: -20px;
+}
+.writingView .writingViewDate {
+  font-size: 12px;
+  color: #c7c7c7;
+  font-weight: 400;
+  margin-bottom: -20px;
+}
+.writingView span {
+  font-size: 16px;
+  width: 100%;
+  text-align: center;
+  font-weight: 500;
+}
+.writingView .diary {
+  width: 100%;
+}
+.writingView .diary p {
+  font-size: 15px;
+  white-space: normal;
+  line-height: 2;
+  word-wrap: break-word;
+  word-break: keep-all;
+}
+
+.selection img {
+  width: 120px;
+  height: 120px;
+}
+.selection .txt {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.selection .txt span {
+  font-weight: 500;
+  font-size: 18px;
+  color: #525252;
+  width: 100%;
+}
+.selection .selectionBtnWrap {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  gap: 20px;
+}
+.selection .selectionBtnWrap a {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.selection .selectionBtnWrap a button {
+  background-color: #ddedea;
+  padding: 10px 16px;
+  border-radius: 10px;
+  border: none;
+  font-size: 14px;
+  color: #525252;
+  font-weight: 500;
+  height: 300px;
+  width: 50%;
+  word-break: keep-all;
+  line-height: 1.5;
+  cursor: pointer;
+  width: 100%;
+}
+
+.play {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+.play img {
+  width: 70%;
+}
+.play span {
+  font-weight: 500;
+  font-size: 18px;
+  color: #525252;
+  width: 100%;
+  text-align: center;
+}
+.play button {
+  background-color: #fadadd;
+  border: none;
+  font-weight: 500;
+  font-size: 14px;
+  padding: 10px 50px;
+  border-radius: 10px;
+  margin-top: 20px;
+  cursor: pointer;
+  color: #525252;
+}
+.play button img {
+  width: 15px;
+  height: 15px;
+  margin-left: 5px;
+  margin-top: 2px;
+}
+
+/*# sourceMappingURL=style.css.map */
