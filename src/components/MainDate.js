@@ -3,7 +3,7 @@ import React from 'react';
 
 const MainDate = ({ isWritingPage }) => {
   return (
-    <section className="mt60">
+    <section className="">
       <div className="mainDate">
         <span>September 27, Friday</span>
         <span>{isWritingPage ? "Write a Diary" : "HOME"}</span>
