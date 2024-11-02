@@ -9,11 +9,27 @@ import Header from './Header';
 import Modal from './Modal';
 import { format } from 'date-fns';
 
+// 날씨 아이콘 import
+import sunIcon from '../assets/img/weather/sun.png';
+import rainIcon from '../assets/img/weather/rain.png';
+import cloudIcon from '../assets/img/weather/cloud.png';
+import typhoonIcon from '../assets/img/weather/typhoon.png';
+import snowIcon from '../assets/img/weather/snow.png';
+
+const weatherTypes = [
+  { id: 'sun', icon: sunIcon, label: '맑음' },
+  { id: 'rain', icon: rainIcon, label: '비' },
+  { id: 'cloud', icon: cloudIcon, label: '구름' },
+  { id: 'typhoon', icon: typhoonIcon, label: '태풍' },
+  { id: 'snow', icon: snowIcon, label: '눈' },
+];
+
 const WritingDiary = () => {
   const [showModal, setShowModal] = useState(false);
   const [selectedDate, setSelectedDate] = useState(new Date());
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
+  const [selectedWeather, setSelectedWeather] = useState('sun'); // 기본값 맑음
 
   const handleSave = () => {
     // 일기 데이터 객체 생성
@@ -21,7 +37,8 @@ const WritingDiary = () => {
       date: selectedDate,
       formattedDate: format(selectedDate, 'MMMM dd, EEEE', { locale: ko }),
       title,
-      content
+      content,
+      weather: selectedWeather
     };
 
     // 로컬 스토리지에 저장
@@ -49,6 +66,20 @@ const WritingDiary = () => {
             }
           />
         </div>
+
+        <div className="weather-selector">
+          {weatherTypes.map((weather) => (
+            <div 
+              key={weather.id}
+              className={`weather-item ${selectedWeather === weather.id ? 'selected' : ''}`}
+              onClick={() => setSelectedWeather(weather.id)}
+            >
+              <img src={weather.icon} alt={weather.label} />
+              <span>{weather.label}</span>
+            </div>
+          ))}
+        </div>
+
         <input 
           type="text" 
           placeholder="제목을 입력해주세요" 

@@ -5,7 +5,7 @@ const MainDate = ({ isWritingPage }) => {
   return (
     <section className="">
       <div className="mainDate">
-        <span>September 27, Friday</span>
+        <span>{new Date().toLocaleDateString('en-US', { month: 'long', day: 'numeric', weekday: 'long' })}</span>
         <span>{isWritingPage ? "Write a Diary" : "HOME"}</span>
       </div>
     </section>

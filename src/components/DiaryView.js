@@ -3,26 +3,38 @@
  */
 import React, { useEffect, useState } from 'react';
 import Header from './Header';
-import sunIcon from '../assets/img/sun.png';
 import { useNavigate } from 'react-router-dom';
+
+// 날씨 아이콘 import
+import sunIcon from '../assets/img/weather/sun.png';
+import rainIcon from '../assets/img/weather/rain.png';
+import cloudIcon from '../assets/img/weather/cloud.png';
+import typhoonIcon from '../assets/img/weather/typhoon.png';
+import snowIcon from '../assets/img/weather/snow.png';
+
+const weatherIcons = {
+  sun: sunIcon,
+  rain: rainIcon,
+  cloud: cloudIcon,
+  typhoon: typhoonIcon,
+  snow: snowIcon
+};
 
 const DiaryView = () => {
   const navigate = useNavigate();
   const [diaryData, setDiaryData] = useState(null);
 
   useEffect(() => {
-    // 로컬 스토리지에서 일기 데이터 불러오기
     const savedDiary = localStorage.getItem('currentDiary');
     if (savedDiary) {
       const parsedDiary = JSON.parse(savedDiary);
-      // date 문자열을 Date 객체로 변환
       parsedDiary.date = new Date(parsedDiary.date);
       setDiaryData(parsedDiary);
     }
   }, []);
 
   const handleCreateMusic = () => {
-    navigate('/music-selection');
+    navigate('/loading', { state: { musicType: 'bgm' } });
   };
 
   if (!diaryData) {
@@ -33,11 +45,11 @@ const DiaryView = () => {
     <div className="container">
       <Header isWritingPage={true} />
       <section className="writingView mt20">
-        <img src={sunIcon} alt="맑음" />
+        <img src={weatherIcons[diaryData.weather]} alt={diaryData.weather} />
         <span className="writingViewDate">{diaryData.formattedDate}</span>
         <span>{diaryData.title}</span>
         <div className="diary">
-          <p>{diaryData.content}</p>
+          <p style={{ whiteSpace: 'pre-wrap' }}>{diaryData.content}</p>
         </div>
       </section>
       <div className="bottomBtnWrap">

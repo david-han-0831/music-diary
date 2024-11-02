@@ -1127,7 +1127,7 @@ main {
 }
 .writingView .diary p {
   font-size: 15px;
-  white-space: normal;
+  white-space: pre-wrap;
   line-height: 2;
   word-wrap: break-word;
   word-break: keep-all;
@@ -1445,4 +1445,49 @@ main {
   width: 2rem;
   line-height: 2rem;
   margin: 0.2rem;
+}
+
+/* 날씨 선택기 스타일 */
+.weather-selector {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 0;
+}
+
+.weather-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  cursor: pointer;
+  padding: 10px;
+  border-radius: 10px;
+  transition: all 0.2s ease;
+}
+
+.weather-item img {
+  width: 30px;
+  height: 30px;
+  object-fit: contain;
+}
+
+.weather-item span {
+  font-size: 12px;
+  color: #525252;
+}
+
+.weather-item.selected {
+  background-color: #f0e5f3;
+}
+
+.weather-item:hover {
+  background-color: #f8f0fa;
+}
+
+.writingDiary textarea {
+  white-space: pre-wrap;
+  resize: none;
+  min-height: 200px;
 }
