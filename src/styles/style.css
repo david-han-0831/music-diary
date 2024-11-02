@@ -266,7 +266,7 @@ nav ul .navOn {
   width: 100%;
   height: 50px;
 }
-.bottomBtnWrap .bottomBtn a button {
+.bottomBtnWrap .bottomBtn button {
   background-color: #dec1e5;
   border-radius: 12px;
   color: #ffffff;
@@ -292,6 +292,7 @@ nav ul .navOn {
   display: flex;
   justify-content: center;
   align-items: center;
+  background-color: #ffffff;
 }
 .bottomBtnWrap2 .bottomBtn {
   width: 100%;
@@ -301,10 +302,10 @@ nav ul .navOn {
   align-items: center;
   gap: 10px;
 }
-.bottomBtnWrap2 .bottomBtn a {
+.bottomBtnWrap2 .bottomBtn > div {
   width: 100%;
 }
-.bottomBtnWrap2 .bottomBtn a button {
+.bottomBtnWrap2 .bottomBtn button {
   background-color: #dec1e5;
   border-radius: 12px;
   color: #ffffff;
@@ -313,13 +314,12 @@ nav ul .navOn {
   border: none;
   cursor: pointer;
   font-weight: 700;
-  font-size: 15px;
+  font-size: 13px;
   letter-spacing: 0.3px;
   text-align: center;
 }
-.bottomBtnWrap2 .bottomBtn a .secondBtn {
+.bottomBtnWrap2 .bottomBtn .secondBtn {
   background-color: #ddedea;
-  color: #ffffff;
 }
 
 section {
@@ -451,6 +451,10 @@ section .year select {
   font-family: "Montserrat", sans-serif;
   font-weight: 600;
   font-size: 0.8rem;
+}
+.swiper .swiper-wrapper .swiper-slide .profile .profileImg .profileInfo span:last-child {
+  font-weight: 400;
+  font-size: 0.6rem;
 }
 .swiper .swiper-wrapper .swiper-slide .profile .profileImg .profileInfo span:last-child {
   font-weight: 400;
@@ -1177,10 +1181,12 @@ main {
 .play {
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: 30px;
 }
 .play img {
   width: 70%;
+  max-width: 300px;
 }
 .play span {
   font-weight: 500;
@@ -1190,6 +1196,10 @@ main {
   text-align: center;
 }
 .play button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
   background-color: #fadadd;
   border: none;
   font-weight: 500;
@@ -1204,7 +1214,82 @@ main {
   width: 15px;
   height: 15px;
   margin-left: 5px;
-  margin-top: 2px;
 }
 
 /*# sourceMappingURL=style.css.map */
+
+.bottomBtnWrap .bottomBtn > div,
+.bottomBtnWrap .bottomBtn a {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.bottomBtnWrap .bottomBtn > div button,
+.bottomBtnWrap .bottomBtn a button {
+  background-color: #dec1e5;
+  border-radius: 12px;
+  color: #ffffff;
+  width: 100%;
+  height: 50px;
+  border: none;
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 13px;
+  letter-spacing: 0.3px;
+  text-align: center;
+}
+
+.selection {
+  height: calc(100vh - 160px);
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+}
+
+.selection .txt {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.selection .txt span {
+  font-weight: 500;
+  font-size: 18px;
+  color: #525252;
+  width: 100%;
+  text-align: center;
+}
+
+.selection .selectionBtnWrap {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.selection .selectionBtnWrap .bottomBtn {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+}
+
+.selection .selectionBtnWrap .bottomBtn button {
+  background-color: #dec1e5;
+  border-radius: 12px;
+  color: #ffffff;
+  width: 100%;
+  height: 50px;
+  border: none;
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 13px;
+  letter-spacing: 0.3px;
+}
+
+.selection .selectionBtnWrap .bottomBtn .secondBtn {
+  background-color: #ddedea;
+}
