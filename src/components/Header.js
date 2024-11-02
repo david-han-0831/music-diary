@@ -1,19 +1,36 @@
 // components/Header.js
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import searchIcon from '../assets/img/search.svg';
 import menuIcon from '../assets/img/menu.svg';
 import backIcon from '../assets/img/arrow-left.svg';
 
-const Header = ({ isWritingPage }) => {
+const Header = ({ isWritingPage, onBack }) => {
+  const navigate = useNavigate();
+
+  const handleBack = () => {
+    if (onBack) {
+      onBack();
+    } else {
+      navigate('/');
+    }
+  };
+
   return (
     <header>
       <div className="headerWrap">
         <div className="header-left">
           <div className="icon">
-            <Link to={isWritingPage ? "/" : "#"}>
-              <img src={isWritingPage ? backIcon : searchIcon} alt={isWritingPage ? "뒤로가기" : "검색"} />
-            </Link>
+            {isWritingPage && (
+              <div onClick={handleBack} style={{ cursor: 'pointer' }}>
+                <img src={backIcon} alt="뒤로가기" />
+              </div>
+            )}
+            {!isWritingPage && (
+              <div>
+                <img src={searchIcon} alt="검색" />
+              </div>
+            )}
           </div>
         </div>
         <div className="header-center">
@@ -23,9 +40,9 @@ const Header = ({ isWritingPage }) => {
         </div>
         <div className="header-right">
           <div className="icon">
-            <a href="#">
+            <div>
               <img src={menuIcon} alt="메뉴" />
-            </a>
+            </div>
           </div>
         </div>
       </div>

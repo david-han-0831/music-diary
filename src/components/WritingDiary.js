@@ -1,7 +1,8 @@
 /**
  * 일기 작성 컴포넌트
  */
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 import DatePicker from 'react-datepicker';
 import { ko } from 'date-fns/locale';
 import "react-datepicker/dist/react-datepicker.css";
@@ -25,11 +26,33 @@ const weatherTypes = [
 ];
 
 const WritingDiary = () => {
+  const location = useLocation();
   const [showModal, setShowModal] = useState(false);
   const [selectedDate, setSelectedDate] = useState(new Date());
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
-  const [selectedWeather, setSelectedWeather] = useState('sun'); // 기본값 맑음
+  const [selectedWeather, setSelectedWeather] = useState('sun');
+
+  // 컴포넌트 마운트 시 또는 location이 변경될 때 데이터 로드
+  useEffect(() => {
+    // DiaryView에서 돌아온 경우에만 데이터 로드
+    if (location.state?.preserveData) {
+      const savedDiary = localStorage.getItem('currentDiary');
+      if (savedDiary) {
+        const parsedDiary = JSON.parse(savedDiary);
+        setSelectedDate(new Date(parsedDiary.date));
+        setTitle(parsedDiary.title);
+        setContent(parsedDiary.content);
+        setSelectedWeather(parsedDiary.weather);
+      }
+    } else {
+      // 메인에서 새로 작성하는 경우 초기화
+      setSelectedDate(new Date());
+      setTitle('');
+      setContent('');
+      setSelectedWeather('sun');
+    }
+  }, [location]);
 
   const handleSave = () => {
     // 일기 데이터 객체 생성

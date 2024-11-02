@@ -33,6 +33,11 @@ const DiaryView = () => {
     }
   }, []);
 
+  const handleBack = () => {
+    // WritingDiary로 이동하면서 데이터 보존 플래그 전달
+    navigate('/writing', { state: { preserveData: true } });
+  };
+
   const handleCreateMusic = () => {
     navigate('/loading', { state: { musicType: 'bgm' } });
   };
@@ -43,7 +48,7 @@ const DiaryView = () => {
 
   return (
     <div className="container">
-      <Header isWritingPage={true} />
+      <Header isWritingPage={true} onBack={handleBack} />
       <section className="writingView mt20">
         <img src={weatherIcons[diaryData.weather]} alt={diaryData.weather} />
         <span className="writingViewDate">{diaryData.formattedDate}</span>
