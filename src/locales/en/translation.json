@@ -1,0 +1,39 @@
+{
+  "diary": {
+    "title": "Enter title",
+    "content": "Enter content",
+    "save": "Save",
+    "weather": {
+      "sun": "Sunny",
+      "rain": "Rainy",
+      "cloud": "Cloudy",
+      "typhoon": "Typhoon",
+      "snow": "Snowy"
+    }
+  },
+  "modal": {
+    "saved": "Saved successfully",
+    "confirm": "Confirm"
+  },
+  "music": {
+    "create": "Create Music with this Diary",
+    "loading": "Creating music",
+    "wait": "Please wait a moment",
+    "complete": {
+      "bgm": "BGM is ready!",
+      "song": "Song is ready!"
+    },
+    "select": {
+      "title": "Based on your diary",
+      "subtitle": "Choose between BGM or Song",
+      "description": "Please select one",
+      "bgm": "Create BGM",
+      "song": "Create Song"
+    },
+    "play": "Play",
+    "retry": {
+      "question": "Don't like the music?",
+      "button": "Create with different mood"
+    }
+  }
+} 

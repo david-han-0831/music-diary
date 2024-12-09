@@ -4,14 +4,15 @@
 import React, { useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import loadingIcon from '../assets/img/loading.svg';
+import { useTranslation } from 'react-i18next';
 
 const Loading = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const musicType = location.state?.musicType;
+  const { t } = useTranslation();
 
   useEffect(() => {
-    // 3초 후 자동으로 결과 페이지로 이동
     const timer = setTimeout(() => {
       navigate('/music-result', { state: { musicType } });
     }, 3000);
@@ -24,7 +25,7 @@ const Loading = () => {
       <div className="loading">
         <img src={loadingIcon} alt="로딩아이콘" />
         <span>
-          음악을 만들고 있어요 <br /> 조금만 기다려주세요
+          {t('music.loading')} <br /> {t('music.wait')}
         </span>
       </div>
     </div>

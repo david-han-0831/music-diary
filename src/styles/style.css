@@ -1510,9 +1510,9 @@ main {
 
 /* MusicResult 페이지 스타일 추가 */
 .content-wrapper {
-  height: calc(100vh - 140px);
+  /* height: calc(100vh - 140px); */
   overflow-y: auto;
-  padding-bottom: 100px;
+  /* padding-bottom: 100px; */
 }
 
 .content-wrapper .writingView {
@@ -1528,4 +1528,46 @@ main {
 
 .content-wrapper .writingView .diary {
   margin-bottom: 0;
+}
+
+/* 언어 선택기 스타일 */
+.language-selector {
+  position: relative;
+}
+
+.language-dropdown {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  margin-top: 10px;
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  width: 120px;
+  z-index: 1000;
+  border: 1px solid #dec1e5;
+}
+
+.language-option {
+  padding: 12px 16px;
+  cursor: pointer;
+  font-size: 14px;
+  color: #525252;
+  transition: all 0.2s ease;
+  text-align: center;
+}
+
+.language-option:hover {
+  background-color: #f0e5f3;
+}
+
+.language-option.active {
+  background-color: #dec1e5;
+  color: #ffffff;
+  font-weight: 500;
+}
+
+.language-option:not(:last-child) {
+  border-bottom: 1px solid #f0e5f3;
 }

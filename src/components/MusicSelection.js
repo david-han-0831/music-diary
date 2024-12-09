@@ -4,9 +4,11 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import Header from './Header';
+import { useTranslation } from 'react-i18next';
 
 const MusicSelection = () => {
   const navigate = useNavigate();
+  const { t } = useTranslation();
 
   const handleSelection = (type) => {
     navigate('/loading', { state: { musicType: type } });
@@ -17,18 +19,18 @@ const MusicSelection = () => {
       <Header isWritingPage={true} />
       <section className="selection mt20">
         <div className="txt">
-          <span>작성하신 일기를 바탕으로</span>
-          <span>BGM으로 만들지 노래로 만들지</span>
-          <span>선택해주세요.</span>
+          <span>{t('music.select.title')}</span>
+          <span>{t('music.select.subtitle')}</span>
+          <span>{t('music.select.description')}</span>
         </div>
 
         <div className="selectionBtnWrap">
           <div className="bottomBtn">
             <div onClick={() => handleSelection('bgm')} style={{ width: '100%' }}>
-              <button className="secondBtn">BGM으로 만들기</button>
+              <button className="secondBtn">{t('music.select.bgm')}</button>
             </div>
             <div onClick={() => handleSelection('song')} style={{ width: '100%' }}>
-              <button>노래로 만들기</button>
+              <button>{t('music.select.song')}</button>
             </div>
           </div>
         </div>

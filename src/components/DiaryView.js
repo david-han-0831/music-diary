@@ -4,6 +4,7 @@
 import React, { useEffect, useState } from 'react';
 import Header from './Header';
 import { useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 // 날씨 아이콘 import
 import sunIcon from '../assets/img/weather/sun.png';
@@ -23,6 +24,7 @@ const weatherIcons = {
 const DiaryView = () => {
   const navigate = useNavigate();
   const [diaryData, setDiaryData] = useState(null);
+  const { t } = useTranslation();
 
   useEffect(() => {
     const savedDiary = localStorage.getItem('currentDiary');
@@ -34,7 +36,6 @@ const DiaryView = () => {
   }, []);
 
   const handleBack = () => {
-    // WritingDiary로 이동하면서 데이터 보존 플래그 전달
     navigate('/writing', { state: { preserveData: true } });
   };
 
@@ -50,7 +51,7 @@ const DiaryView = () => {
     <div className="container">
       <Header isWritingPage={true} onBack={handleBack} />
       <section className="writingView mt20">
-        <img src={weatherIcons[diaryData.weather]} alt={diaryData.weather} />
+        <img src={weatherIcons[diaryData.weather]} alt={t(`diary.weather.${diaryData.weather}`)} />
         <span className="writingViewDate">{diaryData.formattedDate}</span>
         <span>{diaryData.title}</span>
         <div className="diary">
@@ -60,7 +61,7 @@ const DiaryView = () => {
       <div className="bottomBtnWrap">
         <div className="bottomBtn">
           <div onClick={handleCreateMusic} style={{ width: '100%' }}>
-            <button>이 일기로 음악 만들기</button>
+            <button>{t('music.create')}</button>
           </div>
         </div>
       </div>

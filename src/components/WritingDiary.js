@@ -9,6 +9,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import Header from './Header';
 import Modal from './Modal';
 import { format } from 'date-fns';
+import { useTranslation } from 'react-i18next';
 
 // 날씨 아이콘 import
 import sunIcon from '../assets/img/weather/sun.png';
@@ -32,6 +33,7 @@ const WritingDiary = () => {
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
   const [selectedWeather, setSelectedWeather] = useState('sun');
+  const { t } = useTranslation();
 
   // 컴포넌트 마운트 시 또는 location이 변경될 때 데이터 로드
   useEffect(() => {
@@ -105,19 +107,19 @@ const WritingDiary = () => {
 
         <input 
           type="text" 
-          placeholder="제목을 입력해주세요" 
+          placeholder={t('diary.title')}
           value={title}
           onChange={(e) => setTitle(e.target.value)}
         />
         <textarea 
-          placeholder="내용을 입력해주세요"
+          placeholder={t('diary.content')}
           value={content}
           onChange={(e) => setContent(e.target.value)}
         ></textarea>
         <div className="bottomBtnWrap">
           <div className="bottomBtn">
             <div onClick={handleSave} style={{ width: '100%' }}>
-              <button className="btn">저장</button>
+              <button className="btn">{t('diary.save')}</button>
             </div>
           </div>
         </div>
