@@ -23,54 +23,41 @@ const weatherIcons = {
   snow: snowIcon
 };
 
-const API_BASE_URL = 'http://gsubuntu.iptime.org:5000';
-
 const MusicResult = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const musicType = location.state?.musicType || 'song';
   const [diaryData, setDiaryData] = useState(null);
   const [musicUrl, setMusicUrl] = useState(null);
+  const [musicInfo, setMusicInfo] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   const { t } = useTranslation();
 
   useEffect(() => {
     const generateMusic = async () => {
       const savedDiary = localStorage.getItem('currentDiary');
-      if (savedDiary) {
+      if (savedDiary && !musicUrl) {
         const parsedDiary = JSON.parse(savedDiary);
         parsedDiary.date = new Date(parsedDiary.date);
         setDiaryData(parsedDiary);
 
-        try {
-          const response = await fetch(`${API_BASE_URL}/diary_reading`, {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-              diary_text: parsedDiary.content,
-              music_type: musicType === 'bgm' ? 'bgm' : 'song'
-            }),
-          });
-
-          if (!response.ok) {
-            throw new Error('음악 생성에 실패했습니다.');
+        // 테스트를 위한 하드코딩된 URL과 음악 정보
+        setMusicUrl('http://harmony-hackers-test.s3-website.ap-northeast-2.amazonaws.com/diary_reading/diaryreading_20241210002042.mp3');
+        setMusicInfo({
+          description: "A lively and uplifting composition that captures the joy and positivity of a beautiful day, reflecting the warmth and brightness of the moment.",
+          info: {
+            genre: "indie pop",
+            instruments: "acoustic guitar, piano, ukulele",
+            atmosphere: "bright, joyful, uplifting",
+            techniques: "light percussion for a playful rhythm"
           }
-
-          const data = await response.json();
-          setMusicUrl(data.music_url); // API 응답에서 음악 URL을 받아옴
-        } catch (error) {
-          console.error('음악 생성 중 오류 발생:', error);
-          // 에러 처리 로직 추가 가능
-        } finally {
-          setIsLoading(false);
-        }
+        });
+        setIsLoading(false);
       }
     };
 
     generateMusic();
-  }, [musicType]);
+  }, [musicType, musicUrl]);
 
   const handleRetry = () => {
     navigate('/music-selection');
@@ -105,6 +92,33 @@ const MusicResult = () => {
             <img src={playIcon} alt="재생" />
           </button>
         </section>
+        
+        {musicInfo && (
+          <section className="music-info mt20">
+            <div className="description">
+              <h3>Description</h3>
+              <p>{musicInfo.description}</p>
+            </div>
+            <div className="details">
+              <div className="info-item">
+                <span className="label">Genre:</span>
+                <span>{musicInfo.info.genre}</span>
+              </div>
+              <div className="info-item">
+                <span className="label">Instruments:</span>
+                <span>{musicInfo.info.instruments}</span>
+              </div>
+              <div className="info-item">
+                <span className="label">Atmosphere:</span>
+                <span>{musicInfo.info.atmosphere}</span>
+              </div>
+              <div className="info-item">
+                <span className="label">Techniques:</span>
+                <span>{musicInfo.info.techniques}</span>
+              </div>
+            </div>
+          </section>
+        )}
         
         <section className="writingView mt20">
           <img src={weatherIcons[diaryData.weather]} alt={t(`diary.weather.${diaryData.weather}`)} />

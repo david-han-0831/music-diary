@@ -1571,3 +1571,51 @@ main {
 .language-option:not(:last-child) {
   border-bottom: 1px solid #f0e5f3;
 }
+
+/* 음악 정보 스타일 */
+.music-info {
+  padding: 20px;
+  background-color: #f8f8f8;
+  border-radius: 12px;
+  margin: 20px 0;
+}
+
+.music-info .description {
+  margin-bottom: 20px;
+}
+
+.music-info h3 {
+  font-size: 16px;
+  color: #525252;
+  margin-bottom: 10px;
+}
+
+.music-info p {
+  font-size: 14px;
+  color: #666;
+  line-height: 1.6;
+}
+
+.music-info .details {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.music-info .info-item {
+  display: flex;
+  gap: 10px;
+  align-items: baseline;
+}
+
+.music-info .label {
+  font-weight: 500;
+  color: #525252;
+  min-width: 100px;
+  font-size: 14px;
+}
+
+.music-info .info-item span:last-child {
+  color: #666;
+  font-size: 14px;
+}
